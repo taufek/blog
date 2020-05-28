@@ -58,7 +58,7 @@ jobs:
           mkdir -p _bundle/cache
           chmod a+rwx -R _bundle
           docker-compose run jekyll bundle install
-          docker-compose run jekyll bundle exec jekyll build
+          docker-compose run jekyll bundle exec jekyll build --trace
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
