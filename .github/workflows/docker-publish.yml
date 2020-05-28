@@ -45,6 +45,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Retrieve Gem Bundles Cache
+        uses: actions/cache@v1
+        with:
+          path: /srv/jekyll/_bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('/srv/jekyll/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
       - name: Generate site
         run: |
           mkdir -p _bundle/cache
