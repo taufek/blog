@@ -1,6 +1,7 @@
-_bundle
+_bundle/*
 _site
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
 vendor
+!_bundle/.gitkeep
