@@ -45,10 +45,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Generate site
+      - name: Bundle install 
         run: |
           docker-compose run jekyll bundle install
-          docker-compose run jekyll bundle exec jekyll build
+          chmod a+rwx -R _bundle
+
+      - name: Generate site
+        run: docker-compose run jekyll bundle exec jekyll build
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
