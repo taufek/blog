@@ -46,7 +46,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Generate site
-        run: docker-compose run jekyll
+        run: docker-compose run jekyll bundle exec jekyll build
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
