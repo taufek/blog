@@ -40,7 +40,7 @@ jobs:
       - name: Retrieve Gem Bundles Cache
         uses: actions/cache@v1
         with:
-          path: /srv/jekyll/_bundle
+          path: _bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('/srv/jekyll/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
