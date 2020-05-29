@@ -87,8 +87,9 @@ jobs:
           echo "::set-env name=VERSION::$VERSION"
 
       - name: Check Version
+        id: check_version
         run: |
-          echo $VERSION
+          echo ::set-output name=version::$VERSION
 
       - name: Update k8s deployment
         uses: Consensys/kubernetes-action@master
@@ -96,4 +97,4 @@ jobs:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
           # args: apply -f k8s/deployment.yml
-          args: set image deployment/blog-deployment blog=docker.pkg.github.com/taufek/blog/blog:$VERSION
+          args: set image deployment/blog-deployment blog=docker.pkg.github.com/taufek/blog/blog:${{ steps.check_version.outputs.version }}
