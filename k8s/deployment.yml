@@ -22,3 +22,5 @@ spec:
               containerPort: 80
             - name: s-blog-port
               containerPort: 443
+      imagePullSecrets:
+        - name: regcred
