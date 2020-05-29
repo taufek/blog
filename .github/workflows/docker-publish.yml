@@ -45,10 +45,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
-      - name: Check cache
-        run: |
-          ls -l _bundle/gems
-
       - name: Generate site
         run: |
           mkdir -p _bundle/cache
