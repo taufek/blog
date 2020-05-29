@@ -96,4 +96,4 @@ jobs:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
           # args: apply -f k8s/deployment.yml
-          args: set image deployment/blog-deployment blog=docker.pkg.github.com/taufek/blog/blog:${{ $VERSION }}
+          args: set image deployment/blog-deployment blog=docker.pkg.github.com/taufek/blog/blog:$VERSION
