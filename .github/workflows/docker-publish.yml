@@ -84,9 +84,12 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
 
-      - name: Trigger deploy
+          echo "::set-env name={VERSION}::{$VERSION}"
+
+      - name: Update k8s deployment
         uses: Consensys/kubernetes-action@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
-          args: apply -f k8s/deployment.yml
+          # args: apply -f k8s/deployment.yml
+          args: set image deployment/blog-deployment blog=docker.pkg.github.com/taufek/blog/blog:${VERSION}
