@@ -91,6 +91,11 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
 
+          echo "::set-env name=VERSION::$VERSION"
+
+      - name: Check Version
+        id: check_version
+        run: |
           echo ::set-output name=version::$VERSION
 
       - name: Update k8s deployment
@@ -185,6 +190,11 @@ Push the Docker image registry as `docker.pkg.github.com/taufek/blog/blog:1.0.0`
       docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
       docker push $IMAGE_ID:$VERSION
 
+      echo "::set-env name=VERSION::$VERSION"
+
+  - name: Check Version
+    id: check_version
+    run: |
       echo ::set-output name=version::$VERSION
 {% endraw %}
 {% endhighlight %}
