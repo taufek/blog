@@ -9,7 +9,7 @@ services:
       - BUNDLE_GEMFILE=/srv/jekyll/Gemfile
       - BUNDLE_JOBS=2
       - BUNDLE_PATH=/srv/jekyll/_bundle
-    command: jekyll serve --force_polling --livereload --drafts
+    command: bundle exec jekyll serve --force_polling --livereload --drafts
     ports:
       - 4000:4000
       - 35729:35729
