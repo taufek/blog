@@ -26,7 +26,7 @@ jobs:
       - name: Generate site
         run: |
           mkdir -p _bundle/cache
-          chmod a+rwx -R _bundle
+          chmod a+rwx -R .
           docker-compose run jekyll bundle install
           docker-compose run jekyll bundle exec jekyll build --trace
 
