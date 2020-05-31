@@ -6,10 +6,13 @@ categories: jekyll update
 ---
 
 # Problem Statement
-I wanted to get my hands dirty with Kubernetes.
+I always wanted to work with Kubernetes but the subject comes with steep learning curve.
+Especially for someone who does not work directly with software infrastructure on day-to-day basis.
+The best way to learn is to actually use it in actual setting.
+This is my first attempt to use Kubernetes to serve a content on the Internet.
 
 # What: Non-Fictitious CI/CD with Kubernetes
-My plan is to setup a working simple Continuous Integration and Continuous Deployment (CI/CD) workflow that integrates with Kubernetes cluster.
+My plan is to setup a working and simple Continuous Integration and Continuous Deployment (CI/CD) workflow that integrates with Kubernetes cluster.
 What can be simpler than deploying a static site. I might as well I start a new blog site.
 This blog site is the result of CI workflow that I'll be describing below.
 
