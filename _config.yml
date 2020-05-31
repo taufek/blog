@@ -27,6 +27,7 @@ url: "https://blog.taufek.dev" # the base hostname & protocol for your site, e.g
 twitter_username: taufekjohar
 github_username: taufek
 linkedin_username: taufek
+google_analytics: UA-168097191-1
 
 # Build settings
 theme: minima
