@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Retrieve Gem Bundles Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: _bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
