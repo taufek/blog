@@ -22,7 +22,7 @@ Mainly there are 2 things that you need to pay attention for costs reduction.
 
 The minimum number of instances you need to run a proper cluster is 3 instances,
 1 master and 2 nodes.
-By default, the EC2 instance will be the on-demand instance so to reduce the cost,
+By default, the EC2 instance will be an on-demand instance so to reduce the cost,
 you need to change to AWS Spot instances. For this, you have to explicitly set
 the maximum price for your master and nodes instances. This settings can be done
 either during creation or post creation.
