@@ -46,7 +46,8 @@ kops create cluster \
 Then edit the `k8s.blog.taufek.dev.yml` file by adding `maxPrice: "#.##"` for
 both master and nodes settings.
 
-```
+{% highlight yaml %}
+{% raw %}
 apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
@@ -68,7 +69,8 @@ spec:
   maxPrice: "0.10" # Add this line
   maxSize: 2
   ...
-```
+{% endraw %}
+{% endhighlight %}
 
 Then run below command to create the cluster
 
@@ -139,7 +141,8 @@ for etcd cluster, you will need to modify the cluster yaml file manually.
 
 Then edit the `k8s.blog.taufek.dev.yml` file.
 
-```
+{% highlight yaml %}
+{% raw %}
 apiVersion: kops.k8s.io/v1alpha2
 kind: Cluster
 ...
@@ -158,7 +161,8 @@ spec:
       name: a
       volumeSize: 8 # Add this volume in GB
     ...
-```
+{% endraw %}
+{% endhighlight %}
 
 Then run below command to create the cluster
 
@@ -178,7 +182,8 @@ kops edit cluster --state=s3://k8s.blog.taufek.dev.state
 
 Within the Cluster object, set below to configure master and nodes volumes size:
 
-```
+{% highlight yaml %}
+{% raw %}
 apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
@@ -200,7 +205,8 @@ spec:
   ...
   role: Node
   rootVolumeSize: 8 # Add this value in GB
-```
+{% endraw %}
+{% endhighlight %}
 
 Then run below to push the change to your cluster.
 
