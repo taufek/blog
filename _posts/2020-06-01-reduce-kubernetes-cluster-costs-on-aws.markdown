@@ -109,7 +109,7 @@ kops validate cluster --state=s3://k8s.blog.taufek.dev.state
 
 ## EBS Volumes
 
-`kops` will provision 1 volume for each instances in your cluster and 2 volumes
+`kops` provisions 1 volume for each instances in your cluster and 2 volumes
 for etcd cluster. In my 1 master and 2 nodes cluster, I will be given 5 volumes.
 By default, the volumes size are crazily big, at least too big for running
 my blog site. By default, master volume size is 64G, nodes is 128G and etcd is 2x20GB
