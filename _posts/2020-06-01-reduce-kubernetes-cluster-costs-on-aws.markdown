@@ -33,7 +33,7 @@ If you want to set it during cluster creation, you will need to run few commands
 
 First you will need to generate the cluster yaml file.
 
-```
+{% highlight bash %}
 kops create cluster \
   --name=k8s.blog.taufek.dev \
   --state=s3://k8s.blog.taufek.dev.state \
@@ -41,7 +41,7 @@ kops create cluster \
   --dns-zone=k8s.blog.taufek.dev \
   --dry-run \
   --output yaml | tee k8s.blog.taufek.dev.yml
-```
+{% endhighlight %}
 
 Then edit the `k8s.blog.taufek.dev.yml` file by adding `maxPrice: "#.##"` for
 both master and nodes settings.
@@ -74,11 +74,11 @@ spec:
 
 Then run below command to create the cluster
 
-```
+{% highlight bash %}
 kops create -f k8s.blog.taufek.dev.yml --state=s3://k8s.blog.taufek.dev.state
 kops create secret --name k8s.blog.taufek.dev sshpublickey admin -i ~/.ssh/id_rsa.pub
 kops update cluster k8s.taufek.dev --yes --state=s3://k8s.blog.taufek.dev.state
-```
+{% endhighlight %}
 
 Note: Before running above to create the cluster, you might want to read
 `EBS Volumes` section below because part of the setting is not easily change
@@ -89,25 +89,25 @@ after the cluster is created.
 If you already have a running cluster, you can edit the cluster settings. First,
 run below command to open up the Cluster object.
 
-```
+{% highlight bash %}
 kops edit cluster --state=s3://k8s.blog.taufek.dev.state
-```
+{% endhighlight %}
 
 Then it will open up similar cluster yaml file in creation step above. Add the
 `maxPrice` fields and save the file.
 
 Then run below to push the change to your cluster.
 
-```
+{% highlight bash %}
 kops update cluster --yes --state=s3://k8s.blog.taufek.dev.state
 kops rolling-update cluster --yes --state=s3://k8s.blog.taufek.dev.state
-```
+{% endhighlight %}
 
 Run below to know when your cluster is ready
 
-```
+{% highlight bash %}
 kops validate cluster --state=s3://k8s.blog.taufek.dev.state
-```
+{% endhighlight %}
 
 ## EBS Volumes
 
@@ -124,7 +124,7 @@ Unfortunately, `kops`, does not allow to change etcd volume size during creation
 
 First you will need to generate the cluster yaml file.
 
-```
+{% highlight bash %}
 kops create cluster \
   --name=k8s.blog.taufek.dev \
   --state=s3://k8s.blog.taufek.dev.state \
@@ -134,7 +134,7 @@ kops create cluster \
   --dns-zone=k8s.blog.taufek.dev \
   --dry-run \
   --output yaml | tee k8s.blog.taufek.dev.yml
-```
+{% endhighlight %}
 
 For master and nodes volume, you could specify via the command line above but
 for etcd cluster, you will need to modify the cluster yaml file manually.
@@ -166,19 +166,19 @@ spec:
 
 Then run below command to create the cluster
 
-```
+{% highlight bash %}
 kops create -f k8s.blog.taufek.dev.yml --state=s3://k8s.blog.taufek.dev.state
 kops create secret --name k8s.blog.taufek.dev sshpublickey admin -i ~/.ssh/id_rsa.pub
 kops update cluster k8s.taufek.dev --yes --state=s3://k8s.blog.taufek.dev.state
-```
+{% endhighlight %}
 
 ### Existing Cluster
 
 Run below command to open up the Cluster object.
 
-```
+{% highlight bash %}
 kops edit cluster --state=s3://k8s.blog.taufek.dev.state
-```
+{% endhighlight %}
 
 Within the Cluster object, set below to configure master and nodes volumes size:
 
@@ -210,10 +210,10 @@ spec:
 
 Then run below to push the change to your cluster.
 
-```
+{% highlight bash %}
 kops update cluster --yes --state=s3://k8s.blog.taufek.dev.state
 kops rolling-update cluster --yes --state=s3://k8s.blog.taufek.dev.state
-```
+{% endhighlight %}
 
 For etcd volumes, you can't use `kops` to modify the volume size. But there are workaround
 mentioned in this [article][reduce-existing-etcd-volumes]. I personally used this
