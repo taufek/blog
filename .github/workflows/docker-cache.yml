@@ -20,3 +20,9 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
+
+      - name: Bundle Install
+        run: |
+          mkdir -p _bundle/cache
+          chmod a+rwx -R .
+          docker-compose run -e JEKYLL_ENV=production jekyll bundle install
