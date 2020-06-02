@@ -3,6 +3,7 @@ layout: post
 title:  "Reduce Kubernetes Cluster Costs on AWS"
 date:   2020-06-01 18:31:00 +0800
 categories: kubernetes
+hero_src: cash.jpg
 ---
 
 When you spun up a Kubernetes cluster for your own personal blog, you are on a

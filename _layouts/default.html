@@ -4,6 +4,14 @@
 
   <body>
     {% include header.html %}
+    {% if page.hero_src %}
+      {%
+        include hero.html
+        title=page.title
+        image=page.hero_src
+        alt=page.hero_alt
+      %}
+    {% endif %}
       <main class="page-content" aria-label="Content">
         <div class="wrapper">
           {{content}}

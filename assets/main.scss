@@ -1,0 +1,59 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+@charset "utf-8";
+
+.page-content {
+  padding: 0;
+}
+
+.post-header {
+  display: flex;
+  flex-direction: column-reverse;
+  direction: rtl;
+  height: 400px;
+
+  h1 {
+    margin: 0;
+  }
+
+  .post-meta {
+    margin: 0;
+  }
+
+  &::before {
+    content: '';
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  &::after {
+    position: relative;
+    content: '';
+  }
+}
+
+.post-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background-image: radial-gradient(ellipse farthest-corner at 45px 45px, rgba(50, 50, 50, 0.8) 0%, rgba(80, 80, 80, 0.5) );
+  padding: 10px;
+}
+
+.post .post-meta {
+  color: white;
+  padding: 10px;
+  position: absolute;
+}

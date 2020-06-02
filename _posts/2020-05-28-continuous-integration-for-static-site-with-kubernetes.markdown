@@ -3,6 +3,7 @@ layout: post
 title:  "Continuous Integration for Static Site with Kubernetes"
 date:   2020-05-28 00:00:16 +0800
 categories: kubernetes
+hero_src: domore.jpg
 ---
 
 # Problem Statement
