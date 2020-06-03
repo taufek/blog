@@ -28,7 +28,7 @@ For the purpose of this simple site, this is more than sufficient.
 
 But I'm not going to stop here since the purpose of the whole thing is to learn and we will move forward with Ingress.
 
-Below is my current setup after I've setup Ingress in my cluster.
+Below is my current setup with Ingress.
 
 ![Cluster with Ingress](/images/cluster_with_ingress.png)
 
