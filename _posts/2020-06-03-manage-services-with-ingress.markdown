@@ -6,9 +6,9 @@ categories: kubernetes
 hero_src: road.jpg
 ---
 
-Ingress is the gate keeper of your multitude of services in your cluster. All external
+Ingress is the gate keeper to your cluster. All external
 access will go through your Ingress Controller and depending on the rules that you set,
-it will be redirected to a particular services.
+it will be redirected to a particular service.
 
 There are multiple benefits of having Ingress in my cluster.
 
