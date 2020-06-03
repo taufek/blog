@@ -36,7 +36,7 @@ Now the previous Classic ELB has been replaced by Application ELB. ELB acts as a
 It will be the single point of entry for all external access to my cluster. The Kubernetes 'LoadBalancer' Service is
 now replaced by Kubernetes 'NodePort' Services which are only accessible internally.
 
-One benefit of this, the pricing is much cheaper :moneybag:. Yeay!.  And the goodness does not stop here.
+One benefit of having Application ELB over Classic ELB, the pricing is much cheaper :moneybag:. Yeay!.  And the goodness does not stop here.
 
 ## Rules and External DNS
 
