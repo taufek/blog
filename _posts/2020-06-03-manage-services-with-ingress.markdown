@@ -32,7 +32,7 @@ Below is my current setup with Ingress.
 
 ![Cluster with Ingress](/images/cluster_with_ingress.png)
 
-Now the previous Classic ELB has been replaced by Application ELB. This is now being replaced by Ingress Proxy.
+Now the previous Classic ELB has been replaced by Application ELB. ELB acts as an Ingress Proxy.
 It will be the single point of entry for all external access to my cluster. The Kubernetes 'LoadBalancer' Service is
 now replaced by Kubernetes 'NodePort' Services which are only accessible internally.
 
