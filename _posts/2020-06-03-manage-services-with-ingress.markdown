@@ -120,7 +120,7 @@ spec:
 ## Conclusions
 
 With this change, not only it helps me to cut down my AWS bill, it also made the cluster
-to be easily manage. If I need to serve new application, I no longer need
+to be easily managed. If I need to serve new application, I no longer need
 to spawn new LoadBalancer Service, configure the SSL cert and etc. I only need to do it once for
 the Application ELB that serves as Ingress Proxy. All new applications will be managed via Ingress Rules.
 Although it looks more complex on the diagram but it helps if you plan to have multiple applications in your cluster.
