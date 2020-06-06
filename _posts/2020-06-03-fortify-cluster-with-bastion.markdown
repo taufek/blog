@@ -173,5 +173,5 @@ environment but I learn a lot in past couple of weeks by looking at how `kops` w
 
 You can't appreciate enough the complexity of services `kops` utility created under the hood with just one command, `kops create ...`.
 I can't imagine the hours you have to put in to setup everything manually versus doing it with `kops`.
-And it is just not about creating but also managing the infrastructure with this utility. By using this utility not only
+And it is just not about creating but also managing the infrastructure with this utility. Not only
 you save your time but rest assured that your infrastructure is configured in a correct manner.
