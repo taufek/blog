@@ -59,15 +59,15 @@ Edit your cluster yml with following settings. You could get the subnets by runn
   subnets:
   - cidr: ...
     name: ap-southeast-1a
-    type: Private            # change this back Private
+    type: Private            # change this to Private
     zone: ap-southeast-1a
   - cidr: ...
     name: ap-southeast-1b
-    type: Private            # change this back Private
+    type: Private            # change this to Private
     zone: ap-southeast-1b
   - cidr: ...
     name: ap-southeast-1c
-    type: Private            # change this back Private
+    type: Private            # change this to Private
     zone: ap-southeast-1c
   - cidr: ...                # add these new Utility subnets
     name: utility-ap-southeast-1a
@@ -121,8 +121,9 @@ And below is how it looks like now, with Bastion:
 
 ![Cluster with Bastion](/images/cluster_with_bastion.png)
 
-One thing that made me hesitated to stick with this setup, is the additional ELB it created for Bastion,
-which means it will be a significant cost increase in my AWS bill. So I decided to undo this change.
+One thing that made me hesitated to stick with this setup, is the additional ELBs it created for Bastion
+and Master instances.
+This means it will be a significant cost increase in my AWS bill. So I decided to undo this change.
 
 In order to remove Bastion you will need to edit back your cluster yaml file and remove Bastion instance.
 
