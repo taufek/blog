@@ -113,11 +113,11 @@ And you should also be able to ssh into your Bastion instance with following com
 ssh -A admin@bastion.blog.taufek.dev
 ```
 
-Below is how the cluster looks like before without Bastion:
+Below is how the cluster looks like before, without Bastion:
 
 ![Cluster without Bastion](/images/cluster_without_bastion.png)
 
-And below is how it looks like now with Bastion:
+And below is how it looks like now, with Bastion:
 
 ![Cluster with Bastion](/images/cluster_with_bastion.png)
 
@@ -173,5 +173,5 @@ environment but I learn a lot in past couple of weeks by looking at how `kops` w
 
 You can't appreciate enough the complexity of services `kops` utility created under the hood with just one command, `kops create ...`.
 I can't imagine the hours you have to put in to setup everything manually versus doing it with `kops`.
-And it is just not about creating but also managing with this utility. By using this utility not only
+And it is just not about creating but also managing the infrastructure with this utility. By using this utility not only
 you save your time but rest assured that your infrastructure is configured in a correct manner.
