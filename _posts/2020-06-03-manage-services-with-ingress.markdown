@@ -16,6 +16,8 @@ There are multiple benefits of having Ingress in my cluster.
 2. Rules and External DNS.
 3. Redirect to HTTPS.
 
+There are few implementations of Kubernetes Ingress we can choose from and the one I'm using is [aws-alb-ingress-controller][aws-alb-ingress-controller].
+
 ## Replaced Classic ELB with Application ELB
 
 Below is my previous setup before having Ingress.
@@ -124,3 +126,5 @@ to be easily managed. If I need to serve new application, I no longer need
 to spawn new LoadBalancer Service, configure the SSL cert and etc. I only need to do it once for
 the Application ELB that serves as Ingress Proxy. All new applications will be managed via Ingress Rules.
 Although it looks more complex on the diagram but it helps if you plan to have multiple applications in your cluster.
+
+[aws-alb-ingress-controller]: https://github.com/kubernetes-sigs/aws-alb-ingress-controller
