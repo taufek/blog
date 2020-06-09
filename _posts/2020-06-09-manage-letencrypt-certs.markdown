@@ -6,15 +6,18 @@ categories: kubernetes
 hero_src: rusty-padlock.jpg
 ---
 
-Since this blog is using `*.dev` domain, I will need to configure SSL certificate in
-order to serve this content in HTTPS. I'm using [LetsEncrypt] to issue my certificate and the certificate only valid for 3 months.
-I will need to renew them periodically. I can either do that manually when the certificate is almost expire or I can automate the process.
+Since this blog is using `*.dev` domain, I will need to configure SSL
+certificate in order to serve this content in HTTPS. I'm using [LetsEncrypt] to
+issue my certificate and the certificate only valid for 3 months. I will need
+to renew them periodically. I can either do that manually when the certificate
+is almost expire or I can automate the process.
 
 In this post, we will look into how to automate the certificate renewal with [cert-manager].
 
-I've been using [aws-alb-ingress-controller] as Ingress implementation in my cluster
-and but for this, I will need to swap to another Ingress implementation which is [nginx-ingress].
-This is because currently, there is no way for the [cert-manager] to upload the certificate to the ALB.
+I've been using [aws-alb-ingress-controller] as Ingress implementation in my
+cluster and but for this, I will need to swap to another Ingress implementation
+which is [nginx-ingress]. This is because currently, there is no way for the
+[cert-manager] to upload the certificate to the ALB.
 
 ## Pre-requisite
 
@@ -144,10 +147,12 @@ kubectl cert-manager renew --all
 
 ## Conclusions
 
-Certificate renewal is a must for production grade application. You wouldn't want to miss renewing your applications
-certificate when it almost expires. The only thing that made me not to use this implementation is because it requires Classic ELB
-and I'm still evaluating if the cost is still within my budget. If I were to setup for a profitable application,
-this is definitely my choice of implementation.
+Certificate renewal is a must for production grade application. You wouldn't
+want to miss renewing your applications certificate when it almost expires. The
+only thing that made me not to use this implementation is because it requires
+Classic ELB and I'm still evaluating if the cost is still within my budget. If
+I were to setup for a profitable application, this is definitely my choice of
+implementation.
 
 [aws-alb-ingress-controller]: https://github.com/kubernetes-sigs/aws-alb-ingress-controller
 [nginx-ingress]: https://github.com/kubernetes-sigs/aws-alb-ingress-controller

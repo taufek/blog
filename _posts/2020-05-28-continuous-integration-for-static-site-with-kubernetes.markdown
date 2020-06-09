@@ -7,21 +7,24 @@ hero_src: domore.jpg
 ---
 
 # Problem Statement
-I always wanted to work with Kubernetes but the subject comes with steep learning curve.
-Especially for someone who does not work directly with software infrastructure on day-to-day basis.
-The best way to learn is to actually use it in actual setting.
-This is my first attempt to use Kubernetes to serve a content on the Internet.
+I always wanted to work with Kubernetes but the subject comes with steep
+learning curve. Especially for someone who does not work directly with software
+infrastructure on day-to-day basis. The best way to learn is to actually use it
+in actual setting. This is my first attempt to use Kubernetes to serve a
+content on the Internet.
 
 # What: Non-Fictitious CI/CD with Kubernetes
-My plan is to setup a working and simple Continuous Integration and Continuous Deployment (CI/CD) workflow that integrates with Kubernetes cluster.
-What can be simpler than deploying a static site. I might as well I start a new blog site.
-This blog site is the result of CI workflow that I'll be describing below.
+My plan is to setup a working and simple Continuous Integration and Continuous
+Deployment (CI/CD) workflow that integrates with Kubernetes cluster. What can
+be simpler than deploying a static site. I might as well I start a new blog
+site. This blog site is the result of CI workflow that I'll be describing
+below.
 
 # How: Services that Build and Deploy This Blog to Kubernetes Cluster
 Services involved in this CI:
 1. GitHub Action. Workflow orchestration tool that executes steps in CI.
 2. Github Package Registry. Docker image registry provided by Github.
-2. Kubernetes cluster. At the point of writing this post I'm running my cluster on AWS with spot instances provisioned by [kops][kops-repo]. Still evaluating if this is the cheapest method for running Kubernetes cluster. (This is for future blog post)
+3. Kubernetes cluster. At the point of writing this post I'm running my cluster on AWS with spot instances provisioned by [kops][kops-repo]. Still evaluating if this is the cheapest method for running Kubernetes cluster. (This is for future blog post)
 
 Below are the high level steps:
 1. Make changes to my blog repository.

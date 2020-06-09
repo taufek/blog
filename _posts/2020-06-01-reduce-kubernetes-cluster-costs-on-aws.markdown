@@ -10,10 +10,10 @@ When you spun up a Kubernetes cluster for your own personal blog, you are on a
 tight budget. Kubernetes cluster can blow a hole in your pocket if you don't
 pay attention to the AWS services it uses under the hood.
 
-For this blog, the Kubernetes cluster was provisioned using [kops][kops-repo]. There
-are settings you could change only during creation and there are also things
-you could change post creation. For the former point, you better plan it early
-before you create the cluster.
+For this blog, the Kubernetes cluster was provisioned using [kops][kops-repo].
+There are settings you could change only during creation and there are also
+things you could change post creation. For the former point, you better plan it
+early before you create the cluster.
 
 Mainly there are 2 things that you need to pay attention for costs reduction.
 1. EC2 instances.
@@ -21,12 +21,12 @@ Mainly there are 2 things that you need to pay attention for costs reduction.
 
 ## EC2 Instances
 
-The minimum number of instances you need to run a proper cluster is 3 instances,
-1 master and 2 nodes.
-By default, the EC2 instance will be an on-demand instance so to reduce the cost,
-you need to change to AWS Spot instances. For this, you have to explicitly set
-the maximum price for your master and nodes instances. This settings can be done
-either during creation or post creation.
+The minimum number of instances you need to run a proper cluster is 3
+instances, 1 master and 2 nodes. By default, the EC2 instance will be an
+on-demand instance so to reduce the cost, you need to change to AWS Spot
+instances. For this, you have to explicitly set the maximum price for your
+master and nodes instances. This settings can be done either during creation or
+post creation.
 
 ### New Cluster
 
@@ -81,14 +81,14 @@ kops create secret --name k8s.blog.taufek.dev sshpublickey admin -i ~/.ssh/id_rs
 kops update cluster k8s.taufek.dev --yes --state=s3://k8s.blog.taufek.dev.state
 {% endhighlight %}
 
-Note: Before running above to create the cluster, you might want to read
-`EBS Volumes` section below because part of the setting is not easily change
-after the cluster is created.
+Note: Before running above to create the cluster, you might want to read `EBS
+Volumes` section below because part of the setting is not easily change after
+the cluster is created.
 
 ### Existing Cluster
 
-If you already have a running cluster, you can edit the cluster settings. First,
-run below command to open up the Cluster object.
+If you already have a running cluster, you can edit the cluster settings.
+First, run below command to open up the Cluster object.
 
 {% highlight bash %}
 kops edit cluster --state=s3://k8s.blog.taufek.dev.state
@@ -112,14 +112,15 @@ kops validate cluster --state=s3://k8s.blog.taufek.dev.state
 
 ## EBS Volumes
 
-`kops` provisions 1 volume for each instances in your cluster and 2 volumes
-for etcd cluster. In my 1 master and 2 nodes cluster, I will be given 5 volumes.
-By default, the volumes size are crazily big, at least too big for running
-my blog site. By default, master volume size is 64G, nodes is 128G and etcd is 2x20GB
-volumes.
+`kops` provisions 1 volume for each instances in your cluster and 2 volumes for
+etcd cluster. In my 1 master and 2 nodes cluster, I will be given 5 volumes.
+By default, the volumes size are crazily big, at least too big for running my
+blog site. By default, master volume size is 64G, nodes is 128G and etcd is
+2x20GB volumes.
 
-For master and nodes volume size, they can be change during creation and post creation.
-Unfortunately, `kops`, does not allow to change etcd volume size during creation.
+For master and nodes volume size, they can be change during creation and post
+creation. Unfortunately, `kops`, does not allow to change etcd volume size
+during creation.
 
 ### New Cluster
 

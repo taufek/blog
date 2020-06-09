@@ -6,17 +6,21 @@ categories: kubernetes
 hero_src: stormtrooper.jpg
 ---
 
-In previous [post]({% post_url 2020-06-03-manage-services-with-ingress %}) we looked into Ingress as the front facing entry point for your applications users.
-In this post, we will look into Bastion as the backdoor entry point for infrastructure administration users.
+In previous [post]({% post_url 2020-06-03-manage-services-with-ingress %}) we
+looked into Ingress as the front facing entry point for your applications
+users. In this post, we will look into Bastion as the backdoor entry point for
+infrastructure administration users.
 
-Currently, all the EC2 instances in my cluster are on public subnet which all of them has public IP address.
-In order to secure the cluster further, we can move our cluster to a private subnet and setup a Bastion instance
-as a 'jump' server. Bastion will be the only instance on your public subnet and it has access to the cluster.
-We can easily achieve this setup with `kops`.
+Currently, all the EC2 instances in my cluster are on public subnet which all
+of them has public IP address. In order to secure the cluster further, we can
+move our cluster to a private subnet and setup a Bastion instance as a 'jump'
+server. Bastion will be the only instance on your public subnet and it has
+access to the cluster. We can easily achieve this setup with `kops`.
 
 ## Create New Cluster with Bastion
 
-For creating new cluster, you can run below command and your will get a cluster on private network with a Bastion instance ready:
+For creating new cluster, you can run below command and your will get a cluster
+on private network with a Bastion instance ready:
 
 {% highlight bash %}
 kops create cluster \
@@ -38,7 +42,8 @@ kops update cluster \
   --state=s3://k8s.blog.taufek.dev.state
 ```
 
-In a minute or so you will have your cluster ready. You could run below command to know the status:
+In a minute or so you will have your cluster ready. You could run below command
+to know the status:
 ```
 kops validate cluster --state=s3://k8s.blog.taufek.dev.state
 ```
@@ -46,13 +51,15 @@ kops validate cluster --state=s3://k8s.blog.taufek.dev.state
 
 ## Add Bastion to Existing Cluster
 
-For existing cluster, you will need to to edit your cluster object. Run below command to open up your cluster yaml file
+For existing cluster, you will need to to edit your cluster object. Run below
+command to open up your cluster yaml file
 
 ```
 kops edit cluster --state=s3://k8s.blog.taufek.dev.state
 ```
 
-Edit your cluster yml with following settings. You could get the subnets by running `kops` create command with dry-run flag and output to a file.
+Edit your cluster yml with following settings. You could get the subnets by
+running `kops` create command with dry-run flag and output to a file.
 
 {% highlight bash %}
   ...
@@ -106,8 +113,9 @@ kops update cluster --yes --state=s3://k8s.blog.taufek.dev.state
 kops rolling-update cluster  --state=s3://k8s.blog.taufek.dev.state --yes
 ```
 
-That's all too it, and just wait for few minute for your cluster to be reconfigured with private subnet.
-And you should also be able to ssh into your Bastion instance with following command:
+That's all too it, and just wait for few minute for your cluster to be
+reconfigured with private subnet. And you should also be able to ssh into your
+Bastion instance with following command:
 
 ```
 ssh -A admin@bastion.blog.taufek.dev
@@ -121,11 +129,12 @@ And below is how it looks like now, with Bastion:
 
 ![Cluster with Bastion](/images/cluster_with_bastion.png)
 
-One thing that made me hesitated to stick with this setup, is the additional ELBs it created for Bastion
-and Master instances.
-This means it will be a significant cost increase in my AWS bill. So I decided to undo this change.
+One thing that made me hesitated to stick with this setup, is the additional
+ELBs it created for Bastion and Master instances. This means it will be a
+significant cost increase in my AWS bill. So I decided to undo this change.
 
-In order to remove Bastion you will need to edit back your cluster yaml file and remove Bastion instance.
+In order to remove Bastion you will need to edit back your cluster yaml file
+and remove Bastion instance.
 
 Edit your cluster yml with following settings
 
@@ -167,12 +176,16 @@ kops delete instancegroup bastions  --yes --state=s3://k8s.blog.taufek.dev.state
 
 ## Conclusions
 
-Bastion is not a concept solely for Kubernetes but it's a common practice in fortifying your software infrastructure
-even without Kubernetes. I found that by looking at all the AWS services created by `kops`, you could learn
-so much about best practices in software infrastructure. I don't have much experience in setting up production
-environment but I learn a lot in past couple of weeks by looking at how `kops` wires everything together.
+Bastion is not a concept solely for Kubernetes but it's a common practice in
+fortifying your software infrastructure even without Kubernetes. I found that
+by looking at all the AWS services created by `kops`, you could learn so much
+about best practices in software infrastructure. I don't have much experience
+in setting up production environment but I learn a lot in past couple of weeks
+by looking at how `kops` wires everything together.
 
-You can't appreciate enough the complexity of services `kops` utility created under the hood with just one command, `kops create ...`.
-I can't imagine the hours you have to put in to setup everything manually versus doing it with `kops`.
-And it is just not about creating but also managing the infrastructure with this utility. Not only
-you save your time but rest assured that your infrastructure is configured in a correct manner.
+You can't appreciate enough the complexity of services `kops` utility created
+under the hood with just one command, `kops create ...`. I can't imagine the
+hours you have to put in to setup everything manually versus doing it with
+`kops`. And it is just not about creating but also managing the infrastructure
+with this utility. Not only you save your time but rest assured that your
+infrastructure is configured in a correct manner.
