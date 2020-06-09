@@ -117,7 +117,7 @@ Wait for a minute for [cert-manager] to do its thing. It will:
 You can run below to check the certificate status
 
 ```
-> kubectl describe certificate test-taufek-dev
+> kubectl describe certificate blog-taufek-dev
 
 Name:         blog-taufek-dev-tls
 ...
@@ -146,7 +146,7 @@ kubectl cert-manager renew --all
 
 Certificate renewal is a must for production grade application. You wouldn't want to miss renewing your applications
 certificate when it almost expires. The only thing that made me not to use this implementation is because it requires Classic ELB
-and I'm still evaluating if the cost is still within my budget. If were to setup for a profitable application,
+and I'm still evaluating if the cost is still within my budget. If I were to setup for a profitable application,
 this is definitely my choice of implementation.
 
 [aws-alb-ingress-controller]: https://github.com/kubernetes-sigs/aws-alb-ingress-controller
