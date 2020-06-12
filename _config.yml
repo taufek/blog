@@ -59,5 +59,3 @@ header: images/domore.jpg
 exclude:
   - docker-compose.yml
   - Dockerfile
-  - k8s/
-  - vendor
