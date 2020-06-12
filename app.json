@@ -1,0 +1,9 @@
+{
+  "name": "Taufek Codes",
+  "description": "On a journey to learn new things",
+  "repository": "https://github.com/taufek/blog",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg",
+  "website": "https://blog.taufek.dev",
+  "keywords": ["kubernetes", "docker"],
+  "stack": "container"
+}
