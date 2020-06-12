@@ -60,3 +60,4 @@ exclude:
   - docker-compose.yml
   - Dockerfile
   - k8s/
+  - vendor
