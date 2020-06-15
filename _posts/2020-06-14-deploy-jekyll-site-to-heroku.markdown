@@ -17,7 +17,7 @@ In this post, I chose 2nd approach since I like to use Docker image.
 We will serve this Jekyll site via nginx service. In order to map Heroku port
 number to our nginx service, we will need to use below `default.conf` template.
 
-```
+```nginx
 server {
   # Placeholder for Heroku port
   listen  $PORT;
@@ -31,7 +31,7 @@ server {
 
 Dockerfile.
 
-```
+```dockerfile
 FROM nginx:alpine
 
 # copy nginx `default.conf`
@@ -56,7 +56,7 @@ registry.
 Even without Github Action, all I need is Heroku CLI to deploy this Docker
 image using below commands.
 
-```
+```bash
 > bundle exec jekyll build
 
 > heroku container:login
@@ -69,7 +69,8 @@ image using below commands.
 Basically, in Github Actions, we are running above commands. Below is the full
 Github Action workflow yaml.
 
-```
+{% highlight yaml %}
+{% raw %}
 name: Push Container to Heroku
 
 on:
@@ -100,6 +101,7 @@ jobs:
 
     - name: Login to Heroku Container registry
       env:
+        # run `heroku authorizations:create` to generate the HEROKU_API_KEY
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: heroku container:login
 
@@ -112,7 +114,8 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
-```
+{% endraw %}
+{% endhighlight %}
 
 With a push to `master` branch, it will trigger a build which will
 1. Checkout code from `master` branch.
@@ -128,5 +131,3 @@ full control on what other linux packages you wish to install within the
 application server instance such as ImageMagick. It will also give you
 consistent environment between running your application on your local machine
 and on Heroku.
-
-
