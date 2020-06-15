@@ -3,11 +3,11 @@ layout: post
 title:  "Deploy Jekyll Site to Heroku"
 date:   2020-06-14 15:30:00 +0800
 categories: kubernetes
-hero_src: jekyll_heroku.png 
+hero_src: jekyll_heroku.png
 ---
 
 Generally there are 2 ways to deploy Jekyll static site to Heroku.
-1. Deploy as rails app using web server gem such as `puma`, `passenger`, `thin`, 'etc'.
+1. Deploy as rails app using web server gem such as `thin`.
 2. Deploy as Docker image running `nginx` service.
 
 In this post, I chose 2nd approach since I like to use Docker image.
