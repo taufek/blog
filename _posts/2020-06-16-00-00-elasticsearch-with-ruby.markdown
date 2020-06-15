@@ -135,6 +135,15 @@ client.search(index: 'foo', body: body)
 }
 ```
 
+## Cleanup After Yourself
+
+If you are done playing around with your index, you might want to remove your
+dummy data. You can run below to delete our particular dummy index.
+
+```ruby
+client.indices.delete(index: 'foo')
+```
+
 ## Conclusions
 
 Hopefully this will give you a good start on how to learn ElasticSearch with Ruby.
