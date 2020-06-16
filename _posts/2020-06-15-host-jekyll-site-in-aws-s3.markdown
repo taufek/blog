@@ -74,7 +74,7 @@ With a push to `master` branch, it will trigger a build which will
 
 This seems like a cheaper option for hosting a static site and have SSL
 configured in CloudFront compared to paying for a dyno in Heroku to host a site
-with SSL. For Heroku, I will need to pay atleast $7/month for a dyno and for a
+with SSL. For Heroku, I will need to pay atleast $7/month for a dyno and for
 CloudFront it will based on usage. Since my blog does not have much visitors,
 my AWS bill is very small which is around $1/month. This includes S3, Route 53
 and CloudFront services.

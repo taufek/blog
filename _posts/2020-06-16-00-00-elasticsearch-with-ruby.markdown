@@ -6,8 +6,8 @@ categories: ruby
 hero_src: elasticsearch.png
 ---
 
-ElasticSearch (ES) is a popular search and analytics engine. I've been using it in
-most of my Ruby on Rails projects. Usually in a project we will started of
+ElasticSearch (ES) is a popular search and analytics engine. I've been using it
+in most of my Ruby on Rails projects. Usually in a project we will started of
 by building an ActiveRecord model and establish the ES index mapping before we
 could start running the search.
 
@@ -146,4 +146,5 @@ client.indices.delete(index: 'foo')
 
 ## Conclusions
 
-Hopefully this will give you a good start on how to learn ElasticSearch with Ruby.
+Hopefully this will give you a good start on how to learn ElasticSearch with
+Ruby.
