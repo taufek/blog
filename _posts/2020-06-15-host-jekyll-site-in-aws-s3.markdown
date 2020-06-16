@@ -78,4 +78,3 @@ with SSL. For Heroku, I will need to pay atleast $7/month for a dyno and for
 CloudFront it will based on usage. Since my blog does not have much visitors,
 my AWS bill is very small which is around $1/month. This includes S3, Route 53
 and CloudFront services.
-
