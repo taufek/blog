@@ -8,7 +8,7 @@ hero_src: jekyll_s3.png
 
 In previous [post]({% post_url 2020-06-14-deploy-jekyll-site-to-heroku %}),
 I've wrote about on how to push a Jekyll site to Heroku. In this post it will
-about how I host this blog in AWS S3 bucket.
+be about how I host this blog in AWS S3 bucket.
 
 Turns out it is much simpler to do it in S3.
 
@@ -75,7 +75,7 @@ With a push to `master` branch, it will trigger a build which will
 This seems like a cheaper option for hosting a static site and have SSL
 configured in CloudFront compared to paying for a dyno in Heroku to host a site
 with SSL. For Heroku, I will need to pay atleast $7/month for a dyno and for a
-CloudFront it will based on usage. Since my blog does not have much vistors, my
-AWS bill is very small which is around $1/month. This includes S3, Route 53 and
-CloudFront services.
+CloudFront it will based on usage. Since my blog does not have much visitors,
+my AWS bill is very small which is around $1/month. This includes S3, Route 53
+and CloudFront services.
 
