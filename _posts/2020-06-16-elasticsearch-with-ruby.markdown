@@ -31,18 +31,22 @@ We'll be using above `client` instance throughout our example.
 ## Create ES Index Mapping
 
 ```ruby
-setting = {
-  properties: {
-    name: {
-      type: :text
-    },
-    birth_date: {
-      type: :date
+mapping = {
+  doc: {
+    properties: {
+      name: {
+        type: :text
+      },
+      birth_date: {
+        type: :date
+      }
     }
   }
 }
 
-client.create(index: 'foo', type: :doc, body: setting)
+client.create(index: :foo, type: :doc, body: {})
+
+client.indices.put_mapping(index: :surcharges, type: :doc, body: mapping)
 ```
 
 This creates new index named `foo` with following properties:
@@ -67,9 +71,9 @@ ammar = {
   birth_date: '2016-07-03'
 }
 
-client.index(id: 1, index: 'foo', type: :doc, body: adam)
-client.index(id: 2, index: 'foo', type: :doc, body: alif)
-client.index(id: 3, index: 'foo', type: :doc, body: ammar)
+client.index(id: 1, index: :foo, type: :doc, body: adam)
+client.index(id: 2, index: :foo, type: :doc, body: alif)
+client.index(id: 3, index: :foo, type: :doc, body: ammar)
 ```
 
 ## Search away
@@ -87,7 +91,7 @@ body = {
   }
 }
 
-client.search(index: 'foo', body: body)
+client.search(index: :foo, body: body)
 
 #Output:
 {
@@ -117,7 +121,7 @@ body = {
   }
 }
 
-client.search(index: 'foo', body: body)
+client.search(index: :foo, body: body)
 
 #Output:
 {
@@ -141,7 +145,7 @@ If you are done playing around with your index, you might want to remove your
 dummy data. You can run below to delete our particular dummy index.
 
 ```ruby
-client.indices.delete(index: 'foo')
+client.indices.delete(index: :foo)
 ```
 
 ## Conclusions
