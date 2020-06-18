@@ -127,7 +127,6 @@ query = {
   }
 }
 
-
 client.search(index: 'surcharges', body: query)
 
 # Output
@@ -187,7 +186,6 @@ query = {
     }
   }
 }
-
 
 client.search(index: 'surcharges', body: query)
 
