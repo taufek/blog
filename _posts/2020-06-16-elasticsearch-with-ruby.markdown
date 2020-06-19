@@ -46,7 +46,7 @@ mapping = {
 
 client.create(index: :foo, type: :doc, body: {})
 
-client.indices.put_mapping(index: :surcharges, type: :doc, body: mapping)
+client.indices.put_mapping(index: :foo, type: :doc, body: mapping)
 ```
 
 This creates new index named `foo` with following properties:
