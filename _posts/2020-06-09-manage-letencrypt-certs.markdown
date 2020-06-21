@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Let Cert-Manager Manages LetsEncrypt Certificates"
+title:  "Let Cert-Manager Manage LetsEncrypt Certificates"
 date:   2020-06-09 00:20:00 +0800
 categories: kubernetes
 hero_src: rusty-padlock.jpg
