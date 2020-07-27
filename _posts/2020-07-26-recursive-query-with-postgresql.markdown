@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Recursive Query with PostgreSQL"
-date:   2020-07-27 07:30:00 +0800
+date:   2020-07-26 07:30:00 +0800
 categories: postgresql
 hero_src: spiral.jpeg
 ---
