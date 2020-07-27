@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Recursive Query with PostgreSQL"
-date:   2020-07-26 21:30:00 +0800
+date:   2020-07-27 07:30:00 +0800
 categories: postgresql
 hero_src: spiral.jpeg
 ---
@@ -200,15 +200,14 @@ class OrganizationTreeBuilder
 
   def build
     ActiveRecord::Base.connection.execute(<<~SQL)
-      WITH RECURSIVE employees AS (
+      WITH RECURSIVE subordinates AS (
         SELECT
          employees.id,
          employees.full_name,
          employees.role,
          employees.manager_id
         FROM
-         employees managers
-         JOIN employees ON employees.manager_id = managers.id
+         employees
         WHERE
          employees.id = #{@employee.id}
 
@@ -220,9 +219,9 @@ class OrganizationTreeBuilder
          employees.role,
          employees.manager_id
         FROM
-         employees managers
-         JOIN employees ON employees.manager_id = managers.id
-      ) SELECT * FROM employees ORDER BY id ASC;
+         employees
+         JOIN subordinates ON subordinates.manager_id = employees.managers.id
+      ) SELECT * FROM subordinates ORDER BY id ASC;
     SQL
   end
 end
@@ -243,6 +242,71 @@ current (PostgreSQL recursive query) stats
 Obviously, PostgreSQL query is the winner here. Although my test dataset is
 small, but it does prove the point that PostgreSQL recursive query is more
 performant than app recursive query.
+
+But what does the query actually do? It does not make sense to me when I read
+it for the first time. Turns out there are 2 parts within the CTE (Common Table
+Expression) to make this recursive query to work. There is a non-recursive query
+being UNION with recursive query.
+
+Below is the non-recursive query which will be use as the base:
+```ruby
+  SELECT
+   employees.id,
+   employees.full_name,
+   employees.role,
+   employees.manager_id
+  FROM
+   employees managers
+  WHERE
+   employees.id = #{@employee.id}
+```
+
+From this query you will get following output:
+
+|id|full_name|role|manager_id|
+|-|-|-|-|
+| 1 | Jack Dorsey | CEO | null |
+
+Then comes the recursive query below:
+
+```ruby
+  SELECT
+   employees.id,
+   employees.full_name,
+   employees.role,
+   employees.manager_id
+  FROM
+   employees
+   JOIN subordinates ON subordinates.manager_id = employees.managers.id
+```
+
+The recursive query joins with the CTE named `subordinates`. It will start of
+with base data from the non-recursive query and it will get following
+output:
+
+|id|full_name|role|manager_id|
+|-|-|-|-|
+| 2 | Michael Montano | Engineering Lead | 1 |
+| 3 | Kayvon Beykpour | Product Lead | 1 |
+
+These are all the subordinates for employee id 1. Then it will do the same query
+for each of these subordinates and it will keep going until the recursive query
+didn't get any output. At the end it will UNION all the records you will see
+the end results as below:
+
+|id|full_name|role|manager_id|
+|-|-|-|-|
+| 1 | Jack Dorsey | CEO | null |
+| 2 | Michael Montano | Engineering Lead | 1 |
+| 3 | Kayvon Beykpour | Product Lead | 1 |
+| 4 | Joy Su | VP Engineering | 2 |
+| 5 | Nick Turnow | Platform Lead | 2 |
+| 6 | Keith Coleman | VP Product | 3 |
+| 7 | Lakshmi Shankar | Sr Director, Strategy & Operations | 3 |
+
+This is a simplified usage of recursive query in PostgreSQL. There are
+few more things you could do which you could find out from the official
+[documentation](https://www.postgresql.org/docs/9.1/queries-with.html).
 
 ## Bonus
 
