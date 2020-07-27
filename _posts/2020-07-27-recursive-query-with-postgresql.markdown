@@ -289,7 +289,7 @@ output:
 | 2 | Michael Montano | Engineering Lead | 1 |
 | 3 | Kayvon Beykpour | Product Lead | 1 |
 
-These are all the subordinates for employee id 1. Then it will do the same query
+Above are all the subordinates for employee id 1. Then it will do the same query
 for each of these subordinates and it will keep going until the recursive query
 didn't get any output. At the end it will UNION all the records you will see
 the end results as below:
