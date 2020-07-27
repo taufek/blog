@@ -190,7 +190,7 @@ Below is how long it took to build the data for each scenario:
 
 ## Time for Optimization
 PostgreSQL has build-in recursive query which is made for this. Below is updated `OrganizationTreeBuilder` class
-with Postgress recursive query.
+with PostgreSQL recursive query.
 
 ```ruby
 class OrganizationTreeBuilder
@@ -280,7 +280,7 @@ Then comes the recursive query below:
    JOIN subordinates ON subordinates.manager_id = employees.managers.id
 ```
 
-The recursive query joins with the CTE named `subordinates`. It will start of
+The recursive query joins with the CTE named `subordinates`. It will start off
 with base data from the non-recursive query and it will get following
 output:
 
