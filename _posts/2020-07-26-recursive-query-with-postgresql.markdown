@@ -231,7 +231,7 @@ The same unit tests above will still pass since the returned data is still the
 same.
 
 Below are the comparison stats between previous (app recursive query) and
-current (PostgreSQL recursive query) stats
+current (PostgreSQL recursive query).
 
 || App Recursive Query | PostgreSQL Recursive Query |
 |-|-|-|
